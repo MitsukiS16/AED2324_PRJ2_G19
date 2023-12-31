@@ -436,8 +436,6 @@ void calculateIndegree(Graph<Airport> &airports) {
 // Function to rank airport based of the sum of in-degrees and out-degrees
 // Complexity: O(n * log(n) + n * e), where n is the number of airports and e
 // is the number of flights in the graph (assuming sorting has a time
-// complexity of O(n * log(n)))
-// !!!
 void rankingAirports(Graph<Airport> airports, int arg) {
   std::vector<Ranking> vec;
 
@@ -882,22 +880,25 @@ vector<vector<Flight>> bfsPath(Vertex<Airport> *v, string &tgt,
   return paths;
 }
 
+// Function to find th number of connected components in graph using DFS
+// Complexity: O(n + e), where n is the number of airports and e is the
+// number of flights in the graph
 int connectedComponents(Graph<Airport> &airports) {
   int component = 0;
   resetVisited(airports);
   Graph<Airport> g = airports;
-
   for (auto v : g.getVertexSet()) {
     if (!v->isVisited()) {
       dfsConnectedComponents(g, v);
       component++;
     }
   }
-  // std::cout << "Number of connected components: " << component <<
-  // std::endl;
   return component;
 }
 
+// Function (recursive) for DFS to mark all vertices connected to a vertex
+// Complexity: O(n + e), where n is the number of airports and e is the
+// number of flights in the graph
 void dfsConnectedComponents(Graph<Airport> &airports, Vertex<Airport> *v) {
   v->setVisited(true);
   auto adjs = v->getAdj();
