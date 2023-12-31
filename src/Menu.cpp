@@ -16,7 +16,7 @@ void Menu(std::string folder) {
   system("clear");
   std::cout << "Welcome to Travel Management:" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
-  std::cout << "1. Quantity calculation" << std::endl;
+  std::cout << "1. Statistics" << std::endl;
   std::cout << "2. Listing" << std::endl;
   std::cout << "3. Bests flights" << std::endl;
   std::cout << "0. Exit" << std::endl;
@@ -32,13 +32,13 @@ void Menu(std::string folder) {
 
   switch (flag) {
   case 1:
-    quantity();
+    MenuQuantity();
     break;
   case 2:
-    listing();
+    menuListing();
     break;
   case 3:
-    bestFlights();
+    menuBestFlights();
     break;
   case 0:
     exit(0);
@@ -51,19 +51,19 @@ void Menu(std::string folder) {
 }
 
 // Function to handle quantity-related menu options
-void quantity() {
+void MenuQuantity() {
   int flag;
 
   system("clear");
   std::cout << "Quantity Calculation Menu" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
-  std::cout << "1. Number of airports" << std::endl;
-  std::cout << "2. Number of countries" << std::endl;
-  std::cout << "3. Number of cities" << std::endl;
-  std::cout << "4. Number of airlines" << std::endl;
-  std::cout << "5. Number of flights" << std::endl;
-  std::cout << "6. Number of destinations" << std::endl;
+  std::cout << "1. Number of Airports" << std::endl;
+  std::cout << "2. Number of Countries" << std::endl;
+  std::cout << "3. Number of Cities" << std::endl;
+  std::cout << "4. Number of Airlines" << std::endl;
+  std::cout << "5. Number of Flights" << std::endl;
+  std::cout << "6. Number of Destinations" << std::endl;
   std::cout << "0. Back to Main Menu" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
@@ -72,7 +72,7 @@ void quantity() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    quantity();
+    MenuQuantity();
   }
 
   switch (flag) {
@@ -98,20 +98,20 @@ void quantity() {
     break;
   case 6:
     system("clear");
-    menuDestination();
+    menuDestinations();
     break;
   case 0:
     Menu("");
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    quantity();
+    MenuQuantity();
     break;
   }
 }
 
 // Function to handle listing-related menu options
-void listing() {
+void menuListing() {
   int flag;
   int arg;
 
@@ -120,7 +120,7 @@ void listing() {
   std::cout << "-------------------------------------------------" << std::endl;
 
   std::cout << "1. Ranking Airports (more landings and takeoffs)" << std::endl;
-  std::cout << "2. Connecting airports" << std::endl;
+  std::cout << "2. Connecting Airports" << std::endl;
   std::cout << "0. Back to Main Menu" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
@@ -129,7 +129,7 @@ void listing() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    listing();
+    menuListing();
   }
 
   switch (flag) {
@@ -148,11 +148,11 @@ void listing() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    listing();
+    menuListing();
     break;
   case (2):
     system("clear");
-    std::cout << "Connecting airports: " << std::endl;
+    std::cout << "Connecting Airports: " << std::endl;
     std::cout << "--------------------------------------------------"
               << std::endl;
     // getArticulations(airports);
@@ -163,14 +163,14 @@ void listing() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    listing();
+    menuListing();
     break;
   case (0):
     Menu("");
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    listing();
+    menuListing();
     break;
   }
 }
@@ -184,9 +184,9 @@ int selectType(std::string arg) {
   std::cout << "Select your " << arg << " option:" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
-  std::cout << "1. By airports" << std::endl;
-  std::cout << "2. By cities" << std::endl;
-  std::cout << "3. By coordinates" << std::endl;
+  std::cout << "1. By Airports" << std::endl;
+  std::cout << "2. By Cities" << std::endl;
+  std::cout << "3. By Coordinates" << std::endl;
   std::cout << "0. Back to Best Flights" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
@@ -253,8 +253,8 @@ vector<string> filterAirplanes() {
   std::cout << "Bests flights: " << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
-  std::cout << "1. Filter by airplanes" << std::endl;
-  std::cout << "2. Without filter" << std::endl;
+  std::cout << "1. Filter by Airplanes" << std::endl;
+  std::cout << "2. Without Filter" << std::endl;
   std::cout << "0. Back to Main Menu" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
@@ -297,7 +297,7 @@ vector<string> filterAirplanes() {
 }
 
 // Function to find best flights based on the user input
-void bestFlights() {
+void menuBestFlights() {
   vector<string> airplanes = filterAirplanes();
 
   std::string airportOrig;
@@ -331,11 +331,11 @@ void bestFlights() {
     }
     break;
   case (0):
-    bestFlights();
+    menuBestFlights();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    bestFlights();
+    menuBestFlights();
     break;
   }
 
@@ -359,11 +359,11 @@ void bestFlights() {
     }
     break;
   case (0):
-    bestFlights();
+    menuBestFlights();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    bestFlights();
+    menuBestFlights();
     break;
   }
 
@@ -428,7 +428,7 @@ void bestFlights() {
   std::cout << "Press any key to continue..." << std::endl;
   std::cin.ignore();
   std::cin.get();
-  bestFlights();
+  menuBestFlights();
 }
 
 // Function Menu Airports
@@ -462,7 +462,7 @@ void menuAirports() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 2:
     std::cout << "Type Country Name: " << std::endl;
@@ -474,7 +474,7 @@ void menuAirports() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 3:
     std::cout << "Type City Name: " << std::endl;
@@ -486,10 +486,10 @@ void menuAirports() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 0:
-    quantity();
+    MenuQuantity();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
@@ -528,10 +528,10 @@ void menuCountries() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 0:
-    quantity();
+    MenuQuantity();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
@@ -570,7 +570,7 @@ void menuCities() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 2:
     std::cout << "Type Country Name: " << std::endl;
@@ -582,10 +582,10 @@ void menuCities() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 0:
-    quantity();
+    MenuQuantity();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
@@ -624,7 +624,7 @@ void menuAirlines() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 2:
     std::cout << "Type Country Name: " << std::endl;
@@ -636,10 +636,10 @@ void menuAirlines() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 0:
-    quantity();
+    MenuQuantity();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
@@ -684,7 +684,7 @@ void menuFlights() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 2:
     std::cout << "Type Origin Airport Code: " << std::endl;
@@ -696,7 +696,7 @@ void menuFlights() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 3:
     std::cout << "Type Origin Country Code: " << std::endl;
@@ -708,7 +708,7 @@ void menuFlights() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 4:
     std::cout << "Type City Name: " << std::endl;
@@ -720,7 +720,7 @@ void menuFlights() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 5:
     std::cout << "Type Airline Code: " << std::endl;
@@ -732,10 +732,10 @@ void menuFlights() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 0:
-    quantity();
+    MenuQuantity();
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
@@ -745,7 +745,7 @@ void menuFlights() {
 }
 
 // Function Menu Destination
-void menuDestination() {
+void menuDestinations() {
   int flag;
   std::string arg;
   int stop;
@@ -757,7 +757,7 @@ void menuDestination() {
   std::cout << "1. Unlimited Stops (by country)" << std::endl;
   std::cout << "3. Unlimited Stops (by airport)" << std::endl;
   std::cout << "5. Limited Stops" << std::endl;
-  std::cout << "6. Max destinations" << std::endl;
+  std::cout << "6. Max Destinations" << std::endl;
   std::cout << "0. Back to Main Menu" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
 
@@ -766,7 +766,7 @@ void menuDestination() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    menuDestination();
+    menuDestinations();
   }
 
   switch (flag) {
@@ -780,7 +780,7 @@ void menuDestination() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 2:
     std::cout << "Type Airport Code: " << std::endl;
@@ -792,7 +792,7 @@ void menuDestination() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    quantity();
+    MenuQuantity();
     break;
   case 3:
     std::cout << "Type Airport Code: " << std::endl;
@@ -813,22 +813,22 @@ void menuDestination() {
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    menuDestination();
+    menuDestinations();
   case 4:
-    std::cout << "Max number of flights: " << quantityDestinationMax(airports)
+    std::cout << "Max Number of Flights: " << quantityDestinationMax(airports)
               << " stops" << std::endl;
     std::cout << "--------------------------------------------------"
               << std::endl;
     std::cout << "Press any key to continue..." << std::endl;
     std::cin.ignore();
     std::cin.get();
-    menuDestination();
+    menuDestinations();
   case 0:
     Menu("");
     break;
   default:
     std::cout << "Invalid input. Please enter a valid number: " << std::endl;
-    menuDestination();
+    menuDestinations();
     break;
   }
 }

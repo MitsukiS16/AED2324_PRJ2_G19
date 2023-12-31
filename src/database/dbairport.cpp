@@ -583,9 +583,7 @@ void findBestFlights(Graph<Airport> &airports, string country, string city,
 void showPath(Graph<Airport> &airports, vector<Vertex<Airport> *> source,
               vector<Vertex<Airport> *> dest, vector<vector<Flight>> paths,
               vector<string> &airplanes) {
-
   vector<vector<Flight>> flights;
-
   for (auto s : source) {
     // std::cout << "Source: " << s->getInfo().getCode() << std::endl;
     for (auto d : dest) {
@@ -597,7 +595,6 @@ void showPath(Graph<Airport> &airports, vector<Vertex<Airport> *> source,
       paths.insert(paths.end(), flights.begin(), flights.end());
     }
   }
-
   if (paths.empty()) {
     std::cout << "--------------------------------------------------"
               << std::endl;
@@ -605,10 +602,8 @@ void showPath(Graph<Airport> &airports, vector<Vertex<Airport> *> source,
               << std::endl;
     return;
   } else {
-
     std::sort(paths.begin(), paths.end(), comparatorPath);
     const int min = paths[0].size();
-
     for (auto &p : paths) {
       if (p.size() > min) {
         continue;
@@ -676,6 +671,7 @@ void findBestFlights(Graph<Airport> &airports, string countrySrc,
                      string citySrc, string countryDest, string cityDest,
                      vector<string> &airplanes) {
   vector<Vertex<Airport> *> src;
+
   vector<Vertex<Airport> *> dest;
   vector<vector<Flight>> paths;
 
@@ -917,7 +913,6 @@ void dfsConnectedComponents(Graph<Airport> &airports, Vertex<Airport> *v) {
 // Function to find articulation points in the graph
 // Complexity: O(n^2), where n is the number of airports in the graph
 void findArticulationPoints(Graph<Airport> &airports) {
-  
   int connected = connectedComponents(airports);
   for (auto v : airports.getVertexSet()) {
     // std::cout << " Analisando o vertice: " << v->getInfo().getCode() <<
